@@ -1,9 +1,9 @@
 <div class="main-nav">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <a class="navbar-image" [routerLink]="['/home']">
-      <img src= "/dist/logo.png" alt="TestMaker" />
+      <img src= "/dist/logo.png" alt="Gruppenplaner" />
     </a>
-    <a class="navbar-brand" [routerLink]='["/"]' href="#" (click)='collapse()'>TestMaker</a>
+    <a class="navbar-brand" [routerLink]='["/"]' href="#" (click)='collapse()'>Gruppenplaner</a>
     <button class="navbar-toggler btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-expanded="false"
             aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="navbarTogglerDemo02">
       <span class="navbar-toggler-icon"></span>
@@ -14,19 +14,25 @@
         <li class="nav-item" [routerLinkActive]="['link-active']" (click)='collapse()'>
           <a class="nav-link" [routerLink]="['/about']">
             <i class="fa fa-info-circle"></i>
-            About
+            Gruppe/Mandant
           </a>
         </li>
         <li [routerLinkActive]="['link-active']" (click)='collapse()'>
           <a class="nav-link" [routerLink]="['/login']">
             <i class="fas fa-sign-in-alt"></i>
-            Login
+            Teilnehmer
           </a>
         </li>
         <li [routerLinkActive]="['link-active']" (click)='collapse()'>
           <a class="nav-link" [routerLink]="['/quiz/create']">
             <i class="fa fa-plus-circle"></i>
-            Create Quiz
+            Eintragsarten
+          </a>
+        </li>
+        <li [routerLinkActive]="['link-active']" (click)='collapse()'>
+          <a class="nav-link" [routerLink]="['/quiz/create']">
+            <i class="fa fa-plus-circle"></i>
+            Planerdaten
           </a>
         </li>
       </ul>

@@ -1,0 +1,3 @@
+class gruppe_component {
+
+}

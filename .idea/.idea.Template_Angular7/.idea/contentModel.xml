@@ -111,14 +111,10 @@
               <e p="app.component.html" t="Include" />
               <e p="app.component.ts" t="Include" />
               <e p="app.module.ts" t="Include" />
-              <e p="counter" t="Include">
-                <e p="counter.component.html" t="Include" />
-                <e p="counter.component.spec.ts" t="Include" />
-                <e p="counter.component.ts" t="Include" />
-              </e>
-              <e p="fetch-data" t="Include">
-                <e p="fetch-data.component.html" t="Include" />
-                <e p="fetch-data.component.ts" t="Include" />
+              <e p="components" t="Include">
+                <e p="gruppe" t="Include">
+                  <e p="gruppe.component.ts" t="Include" />
+                </e>
               </e>
               <e p="home" t="Include">
                 <e p="home.component.html" t="Include" />
@@ -151,6 +147,9 @@
           <e p="tsconfig.json" t="Include" />
           <e p="tslint.json" t="Include" />
         </e>
+        <e p="Controller" t="Include">
+          <e p="GruppenController.cs" t="Include" />
+        </e>
         <e p="Controllers" t="Include">
           <e p="SampleDataController.cs" t="Include" />
         </e>
@@ -172,6 +171,9 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="Template_Angular7.csproj" t="IncludeRecursive" />
+        <e p="ViewModels" t="Include">
+          <e p="GruppenViewModel.cs" t="Include" />
+        </e>
         <e p="wwwroot" t="Include">
           <e p="dist" t="Include">
             <e p="logo.png" t="Include" />
