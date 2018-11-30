@@ -1,0 +1,73 @@
+<div class="main-nav">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-image" [routerLink]="['/home']">
+      <img src= "/dist/logo.png" alt="TestMaker" />
+    </a>
+    <a class="navbar-brand" [routerLink]='["/"]' href="#" (click)='collapse()'>TestMaker</a>
+    <button class="navbar-toggler btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"  aria-expanded="false"
+            aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed" aria-controls="navbarTogglerDemo02">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" [routerLinkActive]="['link-active']" (click)='collapse()'>
+          <a class="nav-link" [routerLink]="['/about']">
+            <i class="fa fa-info-circle"></i>
+            About
+          </a>
+        </li>
+        <li [routerLinkActive]="['link-active']" (click)='collapse()'>
+          <a class="nav-link" [routerLink]="['/login']">
+            <i class="fas fa-sign-in-alt"></i>
+            Login
+          </a>
+        </li>
+        <li [routerLinkActive]="['link-active']" (click)='collapse()'>
+          <a class="nav-link" [routerLink]="['/quiz/create']">
+            <i class="fa fa-plus-circle"></i>
+            Create Quiz
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</div>
+
+
+
+
+<!--<div class='main-nav'>-->
+    <!--<div class='navbar navbar-inverse'>-->
+        <!--<div class='navbar-header'>-->
+            <!--<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>-->
+                <!--<span class='sr-only'>Toggle navigation</span>-->
+                <!--<span class='icon-bar'></span>-->
+                <!--<span class='icon-bar'></span>-->
+                <!--<span class='icon-bar'></span>-->
+            <!--</button>-->
+            <!--<a class='navbar-brand' [routerLink]='["/"]'>Template .net core 2.1 und Angular 7</a>-->
+        <!--</div>-->
+        <!--<div class='clearfix'></div>-->
+        <!--<div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>-->
+            <!--<ul class='nav navbar-nav'>-->
+                <!--<li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>-->
+                    <!--<a [routerLink]='["/"]' (click)='collapse()'>-->
+                        <!--<span class='glyphicon glyphicon-home'></span> Home-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li [routerLinkActive]='["link-active"]'>-->
+                    <!--<a [routerLink]='["/counter"]' (click)='collapse()'>-->
+                        <!--<span class='glyphicon glyphicon-education'></span> Counter-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li [routerLinkActive]='["link-active"]'>-->
+                    <!--<a [routerLink]='["/fetch-data"]' (click)='collapse()'>-->
+                        <!--<span class='glyphicon glyphicon-th-list'></span> Fetch data-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
