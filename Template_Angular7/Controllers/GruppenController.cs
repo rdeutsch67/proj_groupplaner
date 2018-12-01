@@ -10,7 +10,7 @@ namespace Template_Angular7.Controllers
     public class GruppenController : Controller
     {
         // GET api/gruppen/alle
-        [HttpGet("Alle/{num}")]
+        [HttpGet("Alle/{num?}")]
         public IActionResult Alle(int num = 10)
         {
             var sampleGruppen = new List<GruppenViewModel>();

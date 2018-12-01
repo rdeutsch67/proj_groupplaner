@@ -1,0 +1,8 @@
+ul.gruppen li {
+  color: #000acb;
+  cursor: pointer;
+}
+
+ul.gruppen li.selected {
+  background-color: #cccccc;
+}

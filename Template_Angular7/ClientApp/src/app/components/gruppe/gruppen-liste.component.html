@@ -1,0 +1,8 @@
+<h2>{{title}}</h2>
+<ul class="gruppen">
+  <li *ngFor="let gruppe of gruppen"
+      [class.selected]="gruppe === selectedGruppe"
+      (click)="onSelect(gruppe)">
+    <span>{{gruppe.Title}}</span>
+  </li>
+</ul>
