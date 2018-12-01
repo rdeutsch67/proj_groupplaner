@@ -4,17 +4,17 @@ using Newtonsoft.Json;
 using Template_Angular7.ViewModels;
 using System.Collections.Generic;
 
-namespace WebApplication3.Controllers
+namespace Template_Angular7.Controllers
 {
     [Route("api/[controller]")]
-    public class GruppenController : Controller
+    public class QuizController : Controller
     {
-        // GET api/gruppen/latest
+// GET api/quiz/latest
         [HttpGet("Latest/{num}")]
         public IActionResult Latest(int num = 10)
         {
-            var sampleGruppen = new List<GruppenViewModel>();
-            // add a first sample quiz
+            var sampleQuizzes = new List<QuizViewModel>();
+// add a first sample quiz
             sampleQuizzes.Add(new QuizViewModel()
             {
                 Id = 1,
@@ -35,8 +35,7 @@ namespace WebApplication3.Controllers
                     LastModifiedDate = DateTime.Now
                 });
             }
-            
-            // output the result in JSON format
+// output the result in JSON format
             return new JsonResult(
                 sampleQuizzes,
                 new JsonSerializerSettings()
