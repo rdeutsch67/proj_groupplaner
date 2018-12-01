@@ -112,10 +112,21 @@
               <e p="app.component.html" t="Include" />
               <e p="app.component.ts" t="Include" />
               <e p="app.module.ts" t="Include" />
-              <e p="components" t="Include" />
+              <e p="components" t="Include">
+                <e p="gruppe" t="Include">
+                  <e p="gruppen-liste.component.css" t="Include" />
+                  <e p="gruppen-liste.component.css.map" t="Include" />
+                  <e p="gruppen-liste.component.html" t="Include" />
+                  <e p="gruppen-liste.component.scss" t="Include" />
+                  <e p="gruppen-liste.component.ts" t="Include" />
+                </e>
+              </e>
               <e p="home" t="Include">
                 <e p="home.component.html" t="Include" />
                 <e p="home.component.ts" t="Include" />
+              </e>
+              <e p="interface" t="Include">
+                <e p="gruppe.ts" t="Include" />
               </e>
               <e p="nav-menu" t="Include">
                 <e p="nav-menu.component.css" t="Include" />
