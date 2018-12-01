@@ -1,0 +1,15 @@
+<div *ngIf="gruppe" class="gruppe">
+  <h2>{{gruppe.Bezeichnung}}</h2>
+  <ul>
+    <li>
+      <label>Bezeichnung:</label>
+      <input [(ngModel)]="gruppe.Bezeichnung" placeholder="Gruppenbezeichnung eingeben..." />
+    </li>
+    <li>
+      <label>Hinweis:</label>
+      <textarea [(ngModel)]="gruppe.Beschreibung"
+                placeholder="Beschreibung zur Gruppe..."></textarea>
+    </li>
+  </ul>
+</div>
+

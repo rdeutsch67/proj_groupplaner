@@ -21,7 +21,7 @@ namespace Template_Angular7.ViewModels
         public int IdTeilnehmer { get; set; }          // Gruppenleiter (Gruppen-Admin)
         public string Code { get; set; }               
         public string Bezeichnung { get; set; }
-        public string Hinweis { get; set; }
+        public string Beschreibung { get; set; }
         public bool Aktiv { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }

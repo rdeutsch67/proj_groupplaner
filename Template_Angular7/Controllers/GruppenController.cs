@@ -22,7 +22,7 @@ namespace Template_Angular7.Controllers
                 IdTeilnehmer = 1,
                 Code = "jassen",
                 Bezeichnung = "Gruppe für das Verwalten der gemeinsamen Jassabende.",
-                Hinweis = "Jazzgruppe",
+                Beschreibung = "Jazzgruppe",
                 Aktiv = true,
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now
@@ -37,7 +37,7 @@ namespace Template_Angular7.Controllers
                     IdTeilnehmer = 1,
                     Code = String.Format("code_", i),
                     Bezeichnung = String.Format("Beispielgruppe {0}", i),
-                    Hinweis = String.Format("Hinweis {0}", i),
+                    Beschreibung = String.Format("Hinweis {0}", i),
                     Aktiv = false,
                     CreatedDate = DateTime.Now,
                     LastModifiedDate = DateTime.Now

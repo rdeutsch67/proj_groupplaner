@@ -114,6 +114,11 @@
               <e p="app.module.ts" t="Include" />
               <e p="components" t="Include">
                 <e p="gruppe" t="Include">
+                  <e p="gruppe.component.css" t="Include" />
+                  <e p="gruppe.component.css.map" t="Include" />
+                  <e p="gruppe.component.html" t="Include" />
+                  <e p="gruppe.component.scss" t="Include" />
+                  <e p="gruppe.component.ts" t="Include" />
                   <e p="gruppen-liste.component.css" t="Include" />
                   <e p="gruppen-liste.component.css.map" t="Include" />
                   <e p="gruppen-liste.component.html" t="Include" />

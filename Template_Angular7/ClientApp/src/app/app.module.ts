@@ -8,13 +8,15 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {GruppenListeComponent} from "./components/gruppe/gruppen-liste.component";
+import {GruppeComponent} from "./components/gruppe/gruppe.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    GruppenListeComponent
+    GruppenListeComponent,
+    GruppeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
