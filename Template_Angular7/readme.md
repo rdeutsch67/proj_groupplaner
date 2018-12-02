@@ -13,5 +13,12 @@ zusätzliche Infos:
 - https://www.youtube.com/watch?v=md20lQut9EE
 
 DB-Commands für das Erstellen des DB-Schemas
-1. dotnet ef migrations add InitialMigration -v
+1. dotnet ef migrations add InitialMigration -v  (Entfernen einer bestehenden Migration über "dotnet ef migrations remove"
 2. dotnet ef database update
+
+
+Tipps bei Fehlermeldungen:
+
+-> can't bind to 'formgroup' since it isn't a known property of 'form'. in
+Lösung:
+-> app.module.ts: imports: ReactiveFormsModule

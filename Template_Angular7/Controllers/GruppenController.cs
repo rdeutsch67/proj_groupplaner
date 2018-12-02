@@ -30,6 +30,16 @@ namespace Template_Angular7.Controllers
         {
             //var gruppe = DbContext.Gruppen.Where(i => i.Id == id).FirstOrDefault();
             var gruppe = DbContext.Gruppen.FirstOrDefault(i => i.Id == id);
+            
+            // handle requests asking for non-existing quizzes
+            if (gruppe == null)
+            {
+                return NotFound(new
+                {
+                    Error = String.Format("Gruppe ID {0} nicht gefunden", id)
+                });
+            }
+            
             return new JsonResult(
                 gruppe.Adapt<GruppenViewModel>(),
                 new JsonSerializerSettings()
@@ -40,21 +50,86 @@ namespace Template_Angular7.Controllers
         /// <summary>
         /// neue Gruppe in die DB eintragen
         /// </summary>
-        /// <param name="m">The GruppenViewModel containing the data to insert</param>
+        /// <param name="model">The GruppenViewModel containing the data to insert</param>
         [HttpPut]
-        public IActionResult Put(GruppenViewModel m)
+        public IActionResult Put([FromBody]GruppenViewModel model)
         {
-            throw new NotImplementedException();
+            // return a generic HTTP Status 500 (Server Error)
+            // if the client payload is invalid.
+            if (model == null) return new StatusCodeResult(500);
+            
+            // handle the insert (without object-mapping)
+            var gruppe = new Gruppe();
+            
+            // properties taken from the request
+            gruppe.Code = model.Code;
+            gruppe.Beschreibung = model.Beschreibung;
+            gruppe.Bezeichnung = model.Bezeichnung;
+            gruppe.Aktiv = model.Aktiv;
+            // properties set from server-side
+            gruppe.CreatedDate = DateTime.Now;
+            gruppe.LastModifiedDate = gruppe.CreatedDate;
+            
+            // Set a temporary author using the Admin user's userId
+            // as user login isn't supported yet: we'll change this later on.
+            gruppe.UserId = DbContext.Benutzer.FirstOrDefault(u => u.UserName == "Admin").Id;
+            
+            // add the new quiz
+            DbContext.Gruppen.Add(gruppe);
+            // persist the changes into the Database.
+            DbContext.SaveChanges();
+            // return the newly-created Quiz to the client.
+            return new JsonResult(gruppe.Adapt<GruppenViewModel>(),
+                new JsonSerializerSettings()
+                {
+                    Formatting = Formatting.Indented
+                });
         }
+        
         /// <summary>
         /// Gruppe anhand der {id} editieren
         /// </summary>
-        /// <param name="m">The GruppenViewModel containing the data to update</param>
+        /// <param name="model">The GruppenViewModel containing the data to update</param>
         [HttpPost]
-        public IActionResult Post(GruppenViewModel m)
+        public IActionResult Post([FromBody]GruppenViewModel model)
         {
-            throw new NotImplementedException();
+            // return a generic HTTP Status 500 (Server Error)
+            // if the client payload is invalid.
+            if (model == null) return new StatusCodeResult(500);
+            
+            // retrieve the quiz to edit
+            var gruppe = DbContext.Gruppen.FirstOrDefault(q => q.Id == model.Id);
+            
+            // handle requests asking for non-existing quizzes
+            if (gruppe == null)
+            {
+                return NotFound(new
+                {
+                    Error = String.Format("Gruppe ID {0} nicht gefunden.", model.Id)
+                });
+            }
+            
+            // handle the update (without object-mapping)
+            // by manually assigning the properties
+            // we want to accept from the request
+            gruppe.Code = model.Code;
+            gruppe.Bezeichnung = model.Bezeichnung;
+            gruppe.Beschreibung = model.Beschreibung;
+            gruppe.Aktiv = model.Aktiv;
+            // properties set from server-side
+            gruppe.LastModifiedDate = gruppe.CreatedDate;
+            
+            // persist the changes into the Database.
+            DbContext.SaveChanges();
+            
+            // return the updated Quiz to the client.
+            return new JsonResult(gruppe.Adapt<GruppenViewModel>(),
+                new JsonSerializerSettings()
+                {
+                    Formatting = Formatting.Indented
+                });
         }
+        
         /// <summary>
         /// Löscht eine Gruppen über die {id} auf der DB
         /// </summary>
@@ -62,10 +137,26 @@ namespace Template_Angular7.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            // retrieve the quiz from the Database
+            var gruppe = DbContext.Gruppen.FirstOrDefault(i => i.Id == id);
+            
+            // handle requests asking for non-existing quizzes
+            if (gruppe == null)
+            {
+                return NotFound(new
+                {
+                    Error = String.Format("Gruppe ID {0} nicht gefunden.", id)
+                });
+            }
+            
+            // Gruppe vom DBContext löschen
+            DbContext.Gruppen.Remove(gruppe);
+            // persist the changes into the Database.
+            DbContext.SaveChanges();
+            // return an HTTP Status 200 (OK).
+            return new OkResult();
         }
         #endregion
-        
         
         // GET api/gruppen/alle
         [HttpGet("Alle/{num?}")]

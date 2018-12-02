@@ -125,6 +125,11 @@
                   <e p="about.component.ts" t="Include" />
                 </e>
                 <e p="gruppe" t="Include">
+                  <e p="gruppe-edit.component.css" t="Include" />
+                  <e p="gruppe-edit.component.css.map" t="Include" />
+                  <e p="gruppe-edit.component.html" t="Include" />
+                  <e p="gruppe-edit.component.scss" t="Include" />
+                  <e p="gruppe-edit.component.ts" t="Include" />
                   <e p="gruppe.component.css" t="Include" />
                   <e p="gruppe.component.css.map" t="Include" />
                   <e p="gruppe.component.html" t="Include" />
@@ -196,8 +201,8 @@
           </e>
         </e>
         <e p="Migrations" t="Include">
-          <e p="20181202103228_InitialMigration.cs" t="Include" />
-          <e p="20181202103228_InitialMigration.Designer.cs" t="Include" />
+          <e p="20181202171547_InitialMigration.cs" t="Include" />
+          <e p="20181202171547_InitialMigration.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">

@@ -28,7 +28,7 @@ namespace Template_Angular7.Data
         public string UserId { get; set; }
         
         [DefaultValue(0)]
-        public int Aktiv { get; set; }
+        public bool Aktiv { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
         [Required]

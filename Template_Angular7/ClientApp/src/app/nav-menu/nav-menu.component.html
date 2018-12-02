@@ -19,6 +19,12 @@
             Gruppen
           </a>
         </li>
+        <li class="nav-item" [routerLinkActive]="['link-active']" (click)='collapse()'>
+          <a class="nav-link" [routerLink]="['/gruppen/create']">
+            <i class="fa fa-plus-circle"></i>
+            Gruppe erstellen
+          </a>
+        </li>
         <li [routerLinkActive]="['link-active']" (click)='collapse()'>
           <a data-toggle="collapse"  class="nav-link" [routerLink]="['/teilnehmer']">
             <i class="fas fa-address-book"></i>

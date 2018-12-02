@@ -37,9 +37,8 @@ export class GruppenListeComponent {
 
   onSelect(gruppe: Gruppe) {
     this.selectedGruppe = gruppe;
-    console.log("quiz with Id "
-      + this.selectedGruppe.Id
-      + " ist ausgewählt.");
+    console.log("quiz with Id " + this.selectedGruppe.Id + " ist ausgewählt.");
+    this.router.navigate(["gruppen", this.selectedGruppe.Id]);
   }
 }
 
