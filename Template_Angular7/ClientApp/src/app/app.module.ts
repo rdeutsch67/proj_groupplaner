@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {GruppenListeComponent} from "./components/gruppe/gruppen-liste.component";
 import {GruppeComponent} from "./components/gruppe/gruppe.component";
+import {TeilnehmerComponent} from "./components/teilnehmer/teilnehmer.component";
+import {AboutComponent} from "./components/about/about.component";
+import {PageNotFoundComponent} from "./components/pagenotfound.component/pagenotfound.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import {GruppeComponent} from "./components/gruppe/gruppe.component";
     NavMenuComponent,
     HomeComponent,
     GruppenListeComponent,
-    GruppeComponent
+    GruppeComponent,
+    TeilnehmerComponent,
+    AboutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,11 +30,12 @@ import {GruppeComponent} from "./components/gruppe/gruppe.component";
     NgbModule,
     FormsModule,
     RouterModule.forRoot([
-      /*{ path: '', component: HomeComponent, pathMatch: 'full' },
-      //{ path: 'teilnehmer', component: FetchDataComponent },*/
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: '**', redirectTo: 'home' }
+      { path: 'gruppen/alle/:count', component: GruppenListeComponent },
+      { path: 'teilnehmer', component: TeilnehmerComponent },
+      { path: 'about', component: AboutComponent },
+      { path: '**', component: PageNotFoundComponent }
     ])
   ],
   providers: [],

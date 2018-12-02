@@ -113,6 +113,10 @@
               <e p="app.component.ts" t="Include" />
               <e p="app.module.ts" t="Include" />
               <e p="components" t="Include">
+                <e p="about" t="Include">
+                  <e p="about.component.html" t="Include" />
+                  <e p="about.component.ts" t="Include" />
+                </e>
                 <e p="gruppe" t="Include">
                   <e p="gruppe.component.css" t="Include" />
                   <e p="gruppe.component.css.map" t="Include" />
@@ -124,6 +128,14 @@
                   <e p="gruppen-liste.component.html" t="Include" />
                   <e p="gruppen-liste.component.scss" t="Include" />
                   <e p="gruppen-liste.component.ts" t="Include" />
+                </e>
+                <e p="pagenotfound.component" t="Include">
+                  <e p="pagenotfound.component.html" t="Include" />
+                  <e p="pagenotfound.component.ts" t="Include" />
+                </e>
+                <e p="teilnehmer" t="Include">
+                  <e p="teilnehmer.component.html" t="Include" />
+                  <e p="teilnehmer.component.ts" t="Include" />
                 </e>
               </e>
               <e p="home" t="Include">
