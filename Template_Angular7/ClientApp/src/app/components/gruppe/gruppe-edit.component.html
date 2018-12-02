@@ -2,15 +2,15 @@
   <h2>{{title}}</h2>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="code">Gruppencode:</label>
+      <label for="code">Kurzbezeichnung:</label>
       <br />
       <input type="text" id="code"
              formControlName="Code" required
-             placeholder="Kurzbeschreibung eingeben..."
+             placeholder="Kurzbezeichnung eingeben..."
              class="form-control" />
     </div>
     <div class="form-group">
-      <label for="beschreibung">Beschreibung:</label>
+      <label for="bezeichnung">Bezeichnung:</label>
       <br />
       <input type="text" id="bezeichnung"
              formControlName="Bezeichnung" required
