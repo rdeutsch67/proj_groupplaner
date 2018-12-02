@@ -54,6 +54,7 @@ namespace Template_Angular7.Data
         #endregion Methods
         
         #region Properties
+        public DbSet<ApplicationUser> Benutzer { get; set; }
         public DbSet<Gruppe> Gruppen { get; set; }
         #endregion Properties
     }

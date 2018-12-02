@@ -189,10 +189,16 @@
         </e>
         <e p="Data" t="Include">
           <e p="ApplicationDbContext.cs" t="Include" />
+          <e p="DBSeeder.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="ApplicationUser.cs" t="Include" />
             <e p="Gruppe.cs" t="Include" />
           </e>
+        </e>
+        <e p="Migrations" t="Include">
+          <e p="20181202103228_InitialMigration.cs" t="Include" />
+          <e p="20181202103228_InitialMigration.Designer.cs" t="Include" />
+          <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -210,6 +216,7 @@
         <e p="Properties" t="Include">
           <e p="launchSettings.json" t="Include" />
         </e>
+        <e p="README.md" t="Include" />
         <e p="Startup.cs" t="Include" />
         <e p="Template_Angular7.csproj" t="IncludeRecursive" />
         <e p="ViewModels" t="Include">

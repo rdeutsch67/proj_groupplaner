@@ -27,7 +27,10 @@ namespace Template_Angular7
                 opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
 
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +69,17 @@ namespace Template_Angular7
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+            
+            // Create a service scope to get an ApplicationDbContext instance using DI
+            using (var serviceScope =
+                app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                // Create the Db if it doesn't exist and applies any pending migration.
+                dbContext.Database.Migrate();
+                // Seed the Db.
+                DBSeeder.Seed(dbContext);
+            }
         }
     }
 }
