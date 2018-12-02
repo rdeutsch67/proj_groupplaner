@@ -37,6 +37,12 @@
             <e p="@angular/platform-server" t="IncludeRecursive" />
             <e p="@angular/router" t="IncludeRecursive" />
             <e p="@angular-devkit/build-angular" t="IncludeRecursive" />
+            <e p="@fortawesome/angular-fontawesome" t="IncludeRecursive" />
+            <e p="@fortawesome/fontawesome-free-brands" t="IncludeRecursive" />
+            <e p="@fortawesome/fontawesome-free-regular" t="IncludeRecursive" />
+            <e p="@fortawesome/fontawesome-free-solid" t="IncludeRecursive" />
+            <e p="@fortawesome/fontawesome-svg-core" t="IncludeRecursive" />
+            <e p="@fortawesome/free-solid-svg-icons" t="IncludeRecursive" />
             <e p="@ng-bootstrap/ng-bootstrap" t="IncludeRecursive" />
             <e p="@nguniversal/module-map-ngfactory-loader" t="IncludeRecursive" />
             <e p="@types" t="IncludeRecursive">
@@ -164,6 +170,8 @@
             <e p="main.ts" t="Include" />
             <e p="polyfills.ts" t="Include" />
             <e p="styles.css" t="Include" />
+            <e p="styles.css.map" t="Include" />
+            <e p="styles.scss" t="Include" />
             <e p="test.ts" t="Include" />
             <e p="tsconfig.app.json" t="Include" />
             <e p="tsconfig.spec.json" t="Include" />

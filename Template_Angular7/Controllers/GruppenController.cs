@@ -19,7 +19,6 @@ namespace Template_Angular7.Controllers
             sampleGruppen.Add(new GruppenViewModel()
             {
                 Id = 1,
-                IdTeilnehmer = 1,
                 Code = "jassen",
                 Bezeichnung = "Gruppe für das Verwalten der gemeinsamen Jassabende.",
                 Beschreibung = "Jazzgruppe",
@@ -34,7 +33,6 @@ namespace Template_Angular7.Controllers
                 sampleGruppen.Add(new GruppenViewModel()
                 {
                     Id = i,
-                    IdTeilnehmer = 1,
                     Code = String.Format("code_", i),
                     Bezeichnung = String.Format("Beispielgruppe {0}", i),
                     Beschreibung = String.Format("Hinweis {0}", i),
