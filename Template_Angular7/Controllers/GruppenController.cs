@@ -3,12 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Template_Angular7.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
+using Template_Angular7.Data;
+using Template_Angular7.Controllers;
 
 namespace Template_Angular7.Controllers
 {
     [Route("api/[controller]")]
-    public class GruppenController : Controller
+    public class GruppenController : BaseApiController
+    /*public class GruppenController : Controller*/
     {
+        #region Constructor
+        public GruppenController(ApplicationDbContext context): base(context) { }
+        #endregion Constructor
+        
         // GET api/gruppen/alle
         [HttpGet("Alle/{num?}")]
         public IActionResult Alle(int num = 10)

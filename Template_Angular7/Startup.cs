@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Template_Angular7.Data;
 
-namespace WebApplication3
+namespace Template_Angular7
 {
     public class Startup
     {
@@ -21,6 +23,8 @@ namespace WebApplication3
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddEntityFrameworkNpgsql().AddDbContext<ApplicationDbContext>(opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString("MyWebApiConnection")));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });

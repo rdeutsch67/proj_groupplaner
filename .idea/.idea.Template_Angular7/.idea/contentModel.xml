@@ -38,6 +38,7 @@
             <e p="@angular/router" t="IncludeRecursive" />
             <e p="@angular-devkit/build-angular" t="IncludeRecursive" />
             <e p="@fortawesome/angular-fontawesome" t="IncludeRecursive" />
+            <e p="@fortawesome/fontawesome-free" t="IncludeRecursive" />
             <e p="@fortawesome/fontawesome-free-brands" t="IncludeRecursive" />
             <e p="@fortawesome/fontawesome-free-regular" t="IncludeRecursive" />
             <e p="@fortawesome/fontawesome-free-solid" t="IncludeRecursive" />
@@ -185,6 +186,13 @@
           <e p="GruppenController.cs" t="Include" />
           <e p="QuizController.cs" t="Include" />
           <e p="SampleDataController.cs" t="Include" />
+        </e>
+        <e p="Data" t="Include">
+          <e p="ApplicationDbContext.cs" t="Include" />
+          <e p="Models" t="Include">
+            <e p="ApplicationUser.cs" t="Include" />
+            <e p="Gruppe.cs" t="Include" />
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-/*using TestMakerFreeApp.Data;
-using Mapster;*/
+using Template_Angular7.Data;
+//using Mapster;
 
 namespace Template_Angular7.Controllers
 {
@@ -12,11 +12,10 @@ namespace Template_Angular7.Controllers
     public class BaseApiController : Controller
     {
         #region Constructor
-        //public BaseApiController(ApplicationDbContext context)
-        public BaseApiController()
+        public BaseApiController(ApplicationDbContext context)
         {
-            /*// Instantiate the ApplicationDbContext through DI
-            DbContext = context;*/
+            // Instantiate the ApplicationDbContext through DI
+            DbContext = context;
             
             // Instantiate a single JsonSerializerSettings object
             // that can be reused multiple times.
@@ -28,7 +27,7 @@ namespace Template_Angular7.Controllers
         #endregion
         
         #region Shared Properties
-        //protected ApplicationDbContext DbContext { get; private set; }
+        protected ApplicationDbContext DbContext { get; private set; }
         protected JsonSerializerSettings JsonSettings { get; private set; }
         #endregion
     }
