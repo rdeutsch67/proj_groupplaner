@@ -16,10 +16,12 @@ DB-Commands für das Erstellen des DB-Schemas
 1. dotnet ef migrations add InitialMigration -v  (Entfernen einer bestehenden Migration über "dotnet ef migrations remove"
 2. dotnet ef database update
 
-Neue Migration über eine bestehende laufen lassen:
+-> bei Fehlermeldung "The name 'InitialMigration' is used by an existing migration.":
 1. dotnet ef database update 0
 2. dotnet ef migrations remove
-
+dann
+3. dotnet ef migrations add InitialMigration -v
+4. dotnet ef database update
 
 Tipps bei Fehlermeldungen:
 
