@@ -21,8 +21,12 @@ namespace Template_Angular7.Data
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Gruppen).WithOne(i => i.User);
             
             modelBuilder.Entity<Gruppe>().ToTable("TGruppen");
-            modelBuilder.Entity<Gruppe>().Property(i =>
-                i.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Gruppe>().Property(i => i.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Gruppe>().HasMany(c => c.CodesAktivitaeten).WithOne(i => i.IdGruppe);
+            
+            modelBuilder.Entity<CodeAktivitaeten>().ToTable("TzAktivitaeten");
+            modelBuilder.Entity<CodeAktivitaeten>().Property(i => i.Id).ValueGeneratedOnAdd();
+            
             
             /*modelBuilder.Entity<ApplicationUser>().HasMany(u =>
                 u.Quizzes).WithOne(i => i.User);

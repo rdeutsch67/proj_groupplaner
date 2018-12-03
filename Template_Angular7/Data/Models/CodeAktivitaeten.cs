@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Template_Angular7.Data
 {
-    public class Gruppe
+    public class CodeAktivitaeten
     {
         #region Constructor
-        public Gruppe()
+        public CodeAktivitaeten()
         {
         }
         #endregion
@@ -20,15 +20,16 @@ namespace Template_Angular7.Data
         public int Id { get; set; }
         
         [Required]
-        public string Code { get; set; }
-        public string Bezeichnung { get; set; }
-        public string Beschreibung { get; set; }
+        public int Code { get; set; }
         
         [Required]
-        public string UserId { get; set; }
+        public string Bezeichnung { get; set; }
+        
+        [Required]
+        public int GruppenId { get; set; }
         
         [DefaultValue(0)]
-        public bool Aktiv { get; set; }
+        public bool Summieren { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
         [Required]
@@ -37,15 +38,10 @@ namespace Template_Angular7.Data
         
         #region Lazy-Load Properties
         /// <summary>
-        /// Ersteller der Gruppe author: it will be loaded
-        /// on first use thanks to the EF Lazy-Loading feature.
+        /// Codes, welche zur Gruppe gehören
         /// </summary>
-        [ForeignKey("UserId")]
-        public virtual ApplicationUser User { get; set; }
-        /// <summary>
-        /// Liste aller Aktivitätscodes zu dieser Gruppe.
-        /// </summary>
-        public virtual List<CodeAktivitaeten> CodesAktivitaeten { get; set; }
+        [ForeignKey("GruppenId")]
+        public virtual Gruppe IdGruppe { get; set; }
         #endregion
     }
 }

@@ -91,9 +91,9 @@ namespace Template_Angular7.Data
             EntityEntry<Gruppe> e1 = dbContext.Gruppen.Add(new Gruppe()
             {
                 UserId = authorId,
-                Code = "Trogner Jassrunde",
-                Beschreibung = "Jassrunde mit Trogner Mitglieder",
-                Bezeichnung = @"Jassrunde, welche sich aus hardcore Trogner Jässler zusammensetzt.",
+                Code = "Jassrunde",
+                Beschreibung = "Jassrunde mit Trogner Jässler",
+                Bezeichnung = @"Jassrunde, welche sich aus Trogner Jässler zusammensetzt.",
                 //ViewCount = 2343,
                 CreatedDate = createdDate,
                 LastModifiedDate = lastModifiedDate
