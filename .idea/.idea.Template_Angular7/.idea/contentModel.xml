@@ -124,6 +124,13 @@
                   <e p="about.component.html" t="Include" />
                   <e p="about.component.ts" t="Include" />
                 </e>
+                <e p="code_aktivitaeten" t="Include">
+                  <e p="code_aktivitaeten-edit.component.css" t="Include" />
+                  <e p="code_aktivitaeten-edit.component.css.map" t="Include" />
+                  <e p="code_aktivitaeten-edit.component.html" t="Include" />
+                  <e p="code_aktivitaeten-edit.component.scss" t="Include" />
+                  <e p="code_aktivitaeten-edit.component.ts" t="Include" />
+                </e>
                 <e p="gruppe" t="Include">
                   <e p="gruppe-edit.component.css" t="Include" />
                   <e p="gruppe-edit.component.css.map" t="Include" />
@@ -155,6 +162,7 @@
                 <e p="home.component.ts" t="Include" />
               </e>
               <e p="interface" t="Include">
+                <e p="code_aktivitaet.ts" t="Include" />
                 <e p="gruppe.ts" t="Include" />
               </e>
               <e p="nav-menu" t="Include">
@@ -197,12 +205,13 @@
           <e p="DBSeeder.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="ApplicationUser.cs" t="Include" />
+            <e p="CodeAktivitaeten.cs" t="Include" />
             <e p="Gruppe.cs" t="Include" />
           </e>
         </e>
         <e p="Migrations" t="Include">
-          <e p="20181202171547_InitialMigration.cs" t="Include" />
-          <e p="20181202171547_InitialMigration.Designer.cs" t="Include" />
+          <e p="20181203181545_InitialMigration.cs" t="Include" />
+          <e p="20181203181545_InitialMigration.Designer.cs" t="Include" />
           <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
