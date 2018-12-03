@@ -17,6 +17,9 @@ namespace Template_Angular7.Data
 
             // Dummy-Gruppen erstellen
             if (!dbContext.Gruppen.Any()) CreateGruppen(dbContext);
+            
+            // Dummy Aktivitätscodes erstellen
+            if (!dbContext.CodesAktivitaeten.Any()) CreateAktiviaetscodes(dbContext);
         }
         #endregion
         
@@ -116,6 +119,68 @@ namespace Template_Angular7.Data
             // persist the changes on the Database
             dbContext.SaveChanges();
         }
+        
+        private static void CreateAktiviaetscodes(ApplicationDbContext dbContext)
+        {
+            // local variables
+            DateTime createdDate = DateTime.Now;
+            DateTime lastModifiedDate = DateTime.Now;
+
+            // retrieve the admin user, which we'll use as default author.
+            var authorId = dbContext.Benutzer
+                .Where(u => u.UserName == "Admin")
+                .FirstOrDefault()
+                .Id;
+            var gruppeId = dbContext.Gruppen
+                .Where(u => u.Code == "Jassrunde")
+                .FirstOrDefault()
+                .Id;
+
+            // erstelle Aktivitätencodes
+            EntityEntry<CodeAktivitaeten> e1 = dbContext.CodesAktivitaeten.Add(new CodeAktivitaeten()
+            {
+                GruppenId = gruppeId,
+                Code = "Ja",
+                Bezeichnung = "Jasser, Teilnehmer",
+                Summieren = false,
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<CodeAktivitaeten> e2 = dbContext.CodesAktivitaeten.Add(new CodeAktivitaeten()
+            {
+                GruppenId = gruppeId,
+                Code = "JT",
+                Bezeichnung = "Jasser + Teilnehmer",
+                Summieren = false,
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<CodeAktivitaeten> e3 = dbContext.CodesAktivitaeten.Add(new CodeAktivitaeten()
+            {
+                GruppenId = gruppeId,
+                Code = "Re",
+                Bezeichnung = "Reserve, einsetzbar bei Bedarf",
+                Summieren = false,
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<CodeAktivitaeten> e4 = dbContext.CodesAktivitaeten.Add(new CodeAktivitaeten()
+            {
+                GruppenId = gruppeId,
+                Code = "??",
+                Bezeichnung = "Klärt noch ab",
+                Summieren = false,
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+                    
+            // persist the changes on the Database
+            dbContext.SaveChanges();
+        }
+        
         #endregion
         
         #region Utility Methods

@@ -60,6 +60,7 @@ namespace Template_Angular7.Data
         #region Properties
         public DbSet<ApplicationUser> Benutzer { get; set; }
         public DbSet<Gruppe> Gruppen { get; set; }
+        public DbSet<CodeAktivitaeten> CodesAktivitaeten { get; set; }
         #endregion Properties
     }
 }
