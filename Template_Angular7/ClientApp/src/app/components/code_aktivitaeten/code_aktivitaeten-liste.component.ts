@@ -1,4 +1,3 @@
-
 import { Component, Inject, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
@@ -12,12 +11,13 @@ import { HttpClient } from "@angular/common/http";
 export class Code_aktivitaetenListeComponent implements OnChanges {
   @Input() myGruppe: Gruppe;
   code_aktivitaeten: Code_aktivitaet[];
-  code: string;
+  title: string;
 
   constructor(private http: HttpClient,
-              @Inject('BASE_URL') private baseUrl: string,
-              private router: Router) {
+              private router: Router,
+              @Inject('BASE_URL') private baseUrl: string) {
 
+    this.title = "Codes Aktivitäten";
     this.code_aktivitaeten = [];
   }
 
@@ -42,7 +42,8 @@ export class Code_aktivitaetenListeComponent implements OnChanges {
   }
 
   onCreate() {
-    this.router.navigate(["/codesaktivitaeten/create", this.myGruppe.Id]);
+    /*this.router.navigate(["codesaktivitaeten/create", this.myGruppe.Id]);*/
+    this.router.navigate(["codesaktivitaeten/create", this.myGruppe.Id]);
   }
 
   onEdit(code_aktivitaet : Code_aktivitaet) {

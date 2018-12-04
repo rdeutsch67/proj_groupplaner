@@ -43,8 +43,9 @@ import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/co
       { path: 'gruppen/create', component: GruppeEditComponent},
       { path: 'gruppen/edit/:id', component: GruppeEditComponent},
       { path: 'gruppen/:id', component: GruppeComponent},
-      { path: 'codesaktivitaeten/create', component: Code_aktivitaetenEditComponent},
-      { path: 'codesaktivitaeten/alle/:id', component: Code_aktivitaetenListeComponent },
+      { path: 'codesaktivitaeten/alle/:id', component: Code_aktivitaetenListeComponent }, // alle Codes zur Gruppe
+      { path: 'codesaktivitaeten/create/:id', component: Code_aktivitaetenEditComponent},
+      { path: 'codesaktivitaeten/edit/:id', component: Code_aktivitaetenEditComponent},
       { path: 'teilnehmer', component: TeilnehmerComponent },
       { path: 'about', component: AboutComponent },
       { path: '**', component: PageNotFoundComponent }

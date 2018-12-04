@@ -1,27 +1,45 @@
-<h2>{{title}}</h2>
 <div class="code_aktivitaeten-edit">
-  <div class="form-group">
-    <label for="code">Kurzbezeichnung:</label>
-    <br />
-    <input type="text" id="code"
-           formControlName="Code" required
-           placeholder="Kurzbezeichnung eingeben..."
-           class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="bezeichnung">Bezeichnung:</label>
-    <br />
-    <input type="text" id="bezeichnung"
-           formControlName="Bezeichnung" required
-           placeholder="Bezeichnung eingeben..."
-           class="form-control" />
-  </div>
-  <div>
-    <input *ngIf="editMode" type="button" value="Speichern"
-           (click)="onSubmit(code_aktivitaet)" class="btn btn-success"/>
-    <input *ngIf="!editMode" type="button" value="Aktivität erstellen"
-           (click)="onSubmit(code_aktivitaet)" class="btn btn-success"/>
-    <input type="button" value="Zurück" (click)="onBack()"
-           class="btn btn-secondary"/>
-  </div>
+  <h2>{{title}}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="code">Kurzbezeichnung:</label>
+      <br />
+      <input type="text" id="code"
+             formControlName="Code" required
+             placeholder="Kurzbezeichnung eingeben..."
+             class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="bezeichnung">Bezeichnung:</label>
+      <br />
+      <input type="text" id="bezeichnung"
+             formControlName="Bezeichnung" required
+             placeholder="Bezeichnung eingeben..."
+             class="form-control" />
+    </div>
+    <div class="form-group commands">
+      <button *ngIf="editMode" type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-success">
+        Speichern
+      </button>
+      <button *ngIf="!editMode" type="submit"
+              [disabled]="form.invalid"
+              class="btn btn-success">
+        Aktivität erstellen
+      </button>
+      <button *ngIf="!editMode" type="submit"
+              (click)="onBack()"
+              class="btn btn-secondary">
+        Zurück
+      </button>
+
+      <!--<input *ngIf="editMode" type="button" value="Speichern"
+             (click)="onSubmit(code_aktivitaet)" class="btn btn-success"/>
+      <input *ngIf="!editMode" type="button" value="Aktivität erstellen"
+             (click)="onSubmit(code_aktivitaet)" class="btn btn-success"/>
+      <input type="button" value="Zurück" (click)="onBack()"
+             class="btn btn-secondary"/>-->
+    </div>
+  </form>
 </div>
