@@ -20,13 +20,13 @@ namespace Template_Angular7.Data
         public int Id { get; set; }
         
         [Required]
+        public int GruppenId { get; set; }
+        
+        [Required]
         public string Code { get; set; }
         
         [Required]
         public string Bezeichnung { get; set; }
-        
-        [Required]
-        public int GruppenId { get; set; }
         
         [DefaultValue(0)]
         public bool Summieren { get; set; }
@@ -41,7 +41,7 @@ namespace Template_Angular7.Data
         /// Codes, welche zur Gruppe gehören
         /// </summary>
         [ForeignKey("GruppenId")]
-        public virtual Gruppe IdGruppe { get; set; }
+        public virtual Gruppe Gruppe  { get; set; }
         #endregion
     }
 }

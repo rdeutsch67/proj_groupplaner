@@ -14,6 +14,7 @@ import {AboutComponent} from "./components/about/about.component";
 import {PageNotFoundComponent} from "./components/pagenotfound.component/pagenotfound.component";
 import {GruppeEditComponent} from "./components/gruppe/gruppe-edit.component";
 import {Code_aktivitaetenEditComponent} from "./components/code_aktivitaeten/code_aktivitaeten-edit.component";
+import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/code_aktivitaeten-liste.component";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {Code_aktivitaetenEditComponent} from "./components/code_aktivitaeten/cod
     GruppeComponent,
     GruppeEditComponent,
     Code_aktivitaetenEditComponent,
+    Code_aktivitaetenListeComponent,
     TeilnehmerComponent,
     AboutComponent,
     PageNotFoundComponent
@@ -41,7 +43,8 @@ import {Code_aktivitaetenEditComponent} from "./components/code_aktivitaeten/cod
       { path: 'gruppen/create', component: GruppeEditComponent},
       { path: 'gruppen/edit/:id', component: GruppeEditComponent},
       { path: 'gruppen/:id', component: GruppeComponent},
-      { path: 'zaktivitaeten/create', component: Code_aktivitaetenEditComponent},
+      { path: 'codesaktivitaeten/create', component: Code_aktivitaetenEditComponent},
+      { path: 'codesaktivitaeten/alle/:id', component: Code_aktivitaetenListeComponent },
       { path: 'teilnehmer', component: TeilnehmerComponent },
       { path: 'about', component: AboutComponent },
       { path: '**', component: PageNotFoundComponent }

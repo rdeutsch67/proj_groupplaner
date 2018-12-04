@@ -42,6 +42,7 @@ namespace Template_Angular7.Data
         /// </summary>
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
+        
         /// <summary>
         /// Liste aller Aktivitätscodes zu dieser Gruppe.
         /// </summary>

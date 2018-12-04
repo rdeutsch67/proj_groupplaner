@@ -28,3 +28,14 @@ Tipps bei Fehlermeldungen:
 -> can't bind to 'formgroup' since it isn't a known property of 'form'. in
 Lösung:
 -> app.module.ts: imports: ReactiveFormsModule
+
+JsonResult liefert nur einen leeren Json-Datensatz:
+z.B. 
+   return new JsonResult(
+                codeAktivitaeten.Adapt<CodeAktivitaetenViewModel>(),
+                JsonSettings);
+                
+-> da ein Array von Datensätzen erwartet wird, fehlen oben die Brackets []
+-> return new JsonResult(
+                   codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
+                   JsonSettings);               
