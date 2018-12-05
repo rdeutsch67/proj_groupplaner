@@ -43,13 +43,15 @@ export class Code_aktivitaetenListeComponent implements OnChanges {
   }
 
   loadData(myID: number) {
+    let myUrl: string;
     if (myID > 0 ) {
-      let url = this.baseUrl + "api/codesaktivitaeten/alle/" + this.myGruppe.Id;
+      myUrl = this.baseUrl + "api/codesaktivitaeten/alle/" + this.myGruppe.Id;
     }
     else {
-      let url = this.baseUrl + "api/codesaktivitaeten/alle/0";  // alle holen
+      myUrl = this.baseUrl + "api/codesaktivitaeten/alle/0";  // alle holen
     }
-    this.http.get<Code_aktivitaet[]>(url).subscribe(res => {
+
+    this.http.get<Code_aktivitaet[]>(myUrl).subscribe(res => {
       this.code_aktivitaeten = res;
     }, error => console.error(error));
   }
@@ -71,7 +73,7 @@ export class Code_aktivitaetenListeComponent implements OnChanges {
         .subscribe(res => {
           console.log("Aktivität " + code_aktivitaet.Id + " wurde gelöscht.");
           // refresh the question list
-          this.loadData();
+          this.loadData(0);
         }, error => console.log(error));
     }
   }

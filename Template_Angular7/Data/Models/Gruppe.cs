@@ -47,6 +47,12 @@ namespace Template_Angular7.Data
         /// Liste aller Aktivitätscodes zu dieser Gruppe.
         /// </summary>
         public virtual List<CodeAktivitaeten> CodesAktivitaeten { get; set; }
+        
+        /// <summary>
+        /// Liste aller Teilnehmer zu dieser Gruppe.
+        /// </summary>
+        public virtual List<Teilnehmer> Teilnehmer { get; set; }
+        
         #endregion
     }
 }

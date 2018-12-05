@@ -29,7 +29,6 @@ namespace Template_Angular7.Controllers
         public IActionResult Get(int id)
         {
             var gruppe = DbContext.Gruppen.FirstOrDefault(i => i.Id == id);
-            
             // handle requests asking for non-existing quizzes
             if (gruppe == null)
             {
@@ -162,17 +161,33 @@ namespace Template_Angular7.Controllers
         [HttpGet("Alle/{num?}")]
         public IActionResult Alle(int num = 10)
         {
+
+            if (num > 0)
+            {
+                var myGruppen = DbContext.Gruppen
+                    .OrderByDescending(q => q.CreatedDate)
+                    .Take(num)
+                    .ToArray();
+                return new JsonResult(
+                    myGruppen.Adapt<GruppenViewModel[]>(),
+                    new JsonSerializerSettings()
+                    {
+                        Formatting = Formatting.Indented
+                    });    
+            }
+            else
+            {
+                var myGruppen = DbContext.Gruppen
+                    .OrderByDescending(q => q.CreatedDate)
+                    .ToArray();
+                return new JsonResult(
+                    myGruppen.Adapt<GruppenViewModel[]>(),
+                    new JsonSerializerSettings()
+                    {
+                        Formatting = Formatting.Indented
+                    });
+            }
             
-            var myGruppen = DbContext.Gruppen
-                .OrderByDescending(q => q.CreatedDate)
-                .Take(num)
-                .ToArray();
-            return new JsonResult(
-                myGruppen.Adapt<GruppenViewModel[]>(),
-                new JsonSerializerSettings()
-                {
-                    Formatting = Formatting.Indented
-                });
         }
     }
 }

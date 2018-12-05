@@ -13,6 +13,7 @@
     <table class="table table-hover gruppen">
       <thead>
       <tr>
+        <th>Id</th>
         <th>Code</th>
         <th>Text</th>
         <th></th>
@@ -23,6 +24,7 @@
       <tr *ngFor="let gruppe of gruppen"
           [class.selected]="gruppe === selectedGruppe"
           (click)="onSelect(gruppe)">
+        <td>{{gruppe.Id}}</td>
         <td>{{gruppe.Code}}</td>
         <td>{{gruppe.Bezeichnung}}</td>
         <td>

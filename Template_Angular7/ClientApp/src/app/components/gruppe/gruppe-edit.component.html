@@ -47,5 +47,8 @@
     </div>
   </form>
   <!--<code_aktivitaeten-liste *ngIf="editMode" [gruppe]="Gruppe" ></code_aktivitaeten-liste>-->
+  <teilnehmer-liste *ngIf="editMode" [myGruppe]="gruppe" ></teilnehmer-liste>
+
   <code_aktivitaeten-liste *ngIf="editMode" [myGruppe]="gruppe" ></code_aktivitaeten-liste>
+
 </div>

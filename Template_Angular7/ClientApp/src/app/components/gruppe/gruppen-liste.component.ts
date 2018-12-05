@@ -12,7 +12,7 @@ export class GruppenListeComponent {
   title: string;
   selectedGruppe: Gruppe;
   gruppen: Gruppe[];
-  count: number;
+  //count: number;
 
   constructor(private http: HttpClient,
               private activatedRoute: ActivatedRoute,
@@ -21,6 +21,9 @@ export class GruppenListeComponent {
 
     this.title = "Verfügbare Gruppen";
     let count = +this.activatedRoute.snapshot.params["count"];
+    if (isNaN(count)) {
+      count = 0;
+    }
     this.loadData(count);
     /*if (count) {
       console.log(count);
@@ -37,20 +40,11 @@ export class GruppenListeComponent {
   }
 
   loadData(myCount: number) {
-    if (myCount > 0 ) {
-      console.log(myCount);
-      let url = this.baseUrl + "api/gruppen/alle/" + myCount;
-      this.http.get<Gruppe[]>(url).subscribe(result => {
-        this.gruppen = result;
-      }, error => console.error(error));
-    }
-    else {
-      console.log(myCount);
-      let url = this.baseUrl + "api/gruppen/alle/0";
-      this.http.get<Gruppe[]>(url).subscribe(result => {
-        this.gruppen = result;
-      }, error => console.error(error));
-    }
+    console.log(myCount);
+    let url = this.baseUrl + "api/gruppen/alle/" + myCount;
+    this.http.get<Gruppe[]>(url).subscribe(result => {
+      this.gruppen = result;
+    }, error => console.error(error));
   }
 
   onCreate() {

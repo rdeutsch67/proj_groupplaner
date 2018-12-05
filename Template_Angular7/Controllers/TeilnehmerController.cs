@@ -11,68 +11,69 @@ using Mapster;
 namespace Template_Angular7.Controllers
 {
     [Route("api/[controller]")]
-    public class CodesAktivitaetenController : BaseApiController
+    public class TeilnehmerController : BaseApiController
     {
         #region Constructor
-        public CodesAktivitaetenController(ApplicationDbContext context): base(context) { }
+        public TeilnehmerController(ApplicationDbContext context): base(context) { }
         #endregion Constructor
         
         #region RESTful conventions methods
         /// <summary>
-        /// GET: api/codesaktivitaeten/{id}
-        /// Retrieves the Aktivität with the given {id}
+        /// GET: api/teilnehmer/{id}
+        /// Retrieves the Teilnehmer with the given {id}
         /// </summary>
-        /// <param name="id">The ID of an existing Aktivität</param>
-        /// <returns>the Aktivität with the given {id}</returns>
+        /// <param name="id">The ID of an existing Teilnehmer</param>
+        /// <returns>the Teilnehmer with the given {id}</returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var codeAktivitaet = DbContext.CodesAktivitaeten.FirstOrDefault(i => i.Id == id);
+            var teilnehmer = DbContext.Teilnehmer.FirstOrDefault(i => i.Id == id);
             
             // handle requests asking for non-existing quizzes
-            if (codeAktivitaet == null)
+            if (teilnehmer == null)
             {
                 return NotFound(new
                 {
-                    Error = String.Format("Aktivität ID {0} nicht gefunden", id)
+                    Error = String.Format("teilnehmer ID {0} nicht gefunden", id)
                 });
             }
             
             return new JsonResult(
-                codeAktivitaet.Adapt<CodeAktivitaetenViewModel>(),
+                teilnehmer.Adapt<TeilnehmerViewModel>(),
                 new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
                 });
         }
+        
         /// <summary>
-        /// neue Aktivität in die DB eintragen
+        /// neuen Teilnehmer in die DB eintragen
         /// </summary>
-        /// <param name="model">The CodeAktivitaetenViewModel containing the data to insert</param>
+        /// <param name="model">The TeilnehmerViewModel containing the data to insert</param>
         [HttpPut]
-        public IActionResult Put([FromBody]CodeAktivitaetenViewModel model)
+        public IActionResult Put([FromBody]TeilnehmerViewModel model)
         {
             // return a generic HTTP Status 500 (Server Error)
             // if the client payload is invalid.
             if (model == null) return new StatusCodeResult(500);
             
             // handle the insert (without object-mapping)
-            var codeAktivitaet = new CodeAktivitaeten();
+            var teilnehmer = new Teilnehmer();
             
             // properties taken from the request
-            codeAktivitaet.GruppenId = model.GruppenId;
-            codeAktivitaet.Code = model.Code;
-            codeAktivitaet.Bezeichnung = model.Bezeichnung;
-            codeAktivitaet.Summieren = model.Summieren;
+            teilnehmer.GruppenId = model.GruppenId;
+            teilnehmer.Vorname = model.Vorname;
+            teilnehmer.Nachname = model.Nachname;
+            teilnehmer.Berechtigungen = model.Berechtigungen;
             // properties set from server-side
-            codeAktivitaet.CreatedDate = DateTime.Now;
-            codeAktivitaet.LastModifiedDate = codeAktivitaet.CreatedDate;
+            teilnehmer.CreatedDate = DateTime.Now;
+            teilnehmer.LastModifiedDate = teilnehmer.CreatedDate;
             // add the new quiz
-            DbContext.CodesAktivitaeten.Add(codeAktivitaet);
+            DbContext.Teilnehmer.Add(teilnehmer);
             // persist the changes into the Database.
             DbContext.SaveChanges();
             // return the newly-created Quiz to the client.
-            return new JsonResult(codeAktivitaet.Adapt<CodeAktivitaetenViewModel>(),
+            return new JsonResult(teilnehmer.Adapt<CodeAktivitaetenViewModel>(),
                 new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
@@ -80,21 +81,21 @@ namespace Template_Angular7.Controllers
         }
         
         /// <summary>
-        /// Aktivität anhand der {id} editieren
+        /// Teilnehmer anhand der {id} editieren
         /// </summary>
-        /// <param name="model">The CodeAktivitaetenViewModel containing the data to update</param>
+        /// <param name="model">The TeilnehmerViewModel containing the data to update</param>
         [HttpPost]
-        public IActionResult Post([FromBody]CodeAktivitaetenViewModel model)
+        public IActionResult Post([FromBody]TeilnehmerViewModel model)
         {
             // return a generic HTTP Status 500 (Server Error)
             // if the client payload is invalid.
             if (model == null) return new StatusCodeResult(500);
             
             // Aktivität holen 
-            var codeAktivitaet = DbContext.CodesAktivitaeten.Where(q => q.Id == model.Id).FirstOrDefault();
+            var teilnehmer = DbContext.Teilnehmer.Where(q => q.Id == model.Id).FirstOrDefault();
             
             // handle requests asking for non-existing quizzes
-            if (codeAktivitaet == null)
+            if (teilnehmer == null)
             {
                 return NotFound(new
                 {
@@ -105,18 +106,18 @@ namespace Template_Angular7.Controllers
             // handle the update (without object-mapping)
             // by manually assigning the properties
             // we want to accept from the request
-            codeAktivitaet.GruppenId = model.GruppenId;
-            codeAktivitaet.Code = model.Code;
-            codeAktivitaet.Bezeichnung = model.Bezeichnung;
-            codeAktivitaet.Summieren = model.Summieren;
+            teilnehmer.GruppenId = model.GruppenId;
+            teilnehmer.Vorname = model.Vorname;
+            teilnehmer.Nachname = model.Nachname;
+            teilnehmer.Berechtigungen = model.Berechtigungen;
             // properties set from server-side
-            codeAktivitaet.LastModifiedDate = codeAktivitaet.CreatedDate;
+            teilnehmer.LastModifiedDate = teilnehmer.CreatedDate;
             
             // persist the changes into the Database.
             DbContext.SaveChanges();
             
             // return the updated Quiz to the client.
-            return new JsonResult(codeAktivitaet.Adapt<CodeAktivitaetenViewModel>(),
+            return new JsonResult(teilnehmer.Adapt<TeilnehmerViewModel>(),
                 new JsonSerializerSettings()
                 {
                     Formatting = Formatting.Indented
@@ -124,26 +125,26 @@ namespace Template_Angular7.Controllers
         }
         
         /// <summary>
-        /// Löscht eine Aktivität über die {id} auf der DB
+        /// Löscht einen Teilnehmer über die {id} auf der DB
         /// </summary>
-        /// <param name="id">The ID of an existing Aktivität</param>
+        /// <param name="id">The ID of an existing Teilnehmer</param>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             // retrieve the quiz from the Database
-            var codeAktivitaet = DbContext.CodesAktivitaeten.FirstOrDefault(i => i.Id == id);
+            var teilnehmer = DbContext.Teilnehmer.FirstOrDefault(i => i.Id == id);
             
             // handle requests asking for non-existing quizzes
-            if (codeAktivitaet == null)
+            if (teilnehmer == null)
             {
                 return NotFound(new
                 {
-                    Error = String.Format("Aktivität ID {0} nicht gefunden.", id)
+                    Error = String.Format("Teilnehmer ID {0} nicht gefunden.", id)
                 });
             }
             
             // Aktivität vom DBContext löschen
-            DbContext.CodesAktivitaeten.Remove(codeAktivitaet);
+            DbContext.Teilnehmer.Remove(teilnehmer);
             // persist the changes into the Database.
             DbContext.SaveChanges();
             // return an HTTP Status 200 (OK).
@@ -151,27 +152,28 @@ namespace Template_Angular7.Controllers
         }
         #endregion
         
-        // GET api/gruppen/alle
+        // GET api/teilnehmer/alle
         [HttpGet("alle/{gruppenId}")]
         public IActionResult alle(int gruppenId)
         {
             if (gruppenId > 0)
             {
-                var codeAktivitaeten = DbContext.CodesAktivitaeten
+                var teilnehmer = DbContext.Teilnehmer
                     .Where(q => q.GruppenId == gruppenId)
-                    .OrderBy(q => q.Code)
+                    .OrderBy(q => q.Vorname)
                     .ToArray();
                 return new JsonResult(
-                    codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
+                    teilnehmer.Adapt<TeilnehmerViewModel[]>(),
                     JsonSettings);
             }
             else
             {   // alle Aktiviäten
-                var codeAktivitaeten = DbContext.CodesAktivitaeten
-                    .OrderBy(q => q.GruppenId).ThenBy(q => q.Code)    
+                var teilnehmer = DbContext.Teilnehmer
+                    .Where(q => q.GruppenId != gruppenId)
+                    .OrderBy(q => q.GruppenId).ThenBy(q => q.Vorname)
                     .ToArray();
                 return new JsonResult(
-                    codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
+                    teilnehmer.Adapt<TeilnehmerViewModel[]>(),
                     JsonSettings);
             }
             

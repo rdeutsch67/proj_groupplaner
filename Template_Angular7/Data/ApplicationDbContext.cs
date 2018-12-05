@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Template_Angular7.ViewModels;
 
 namespace Template_Angular7.Data
 {
@@ -24,10 +25,15 @@ namespace Template_Angular7.Data
             modelBuilder.Entity<Gruppe>().Property(i => i.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Gruppe>().HasOne(i => i.User).WithMany(u => u.Gruppen);
             modelBuilder.Entity<Gruppe>().HasMany(i => i.CodesAktivitaeten).WithOne(u => u.Gruppe);
+            modelBuilder.Entity<Gruppe>().HasMany(i => i.Teilnehmer).WithOne(u => u.Gruppe);
             
-            modelBuilder.Entity<CodeAktivitaeten>().ToTable("TzAktivitaeten");
+            modelBuilder.Entity<CodeAktivitaeten>().ToTable("TAktivitaeten");
             modelBuilder.Entity<CodeAktivitaeten>().Property(i => i.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<CodeAktivitaeten>().HasOne(i => i.Gruppe).WithMany(u => u.CodesAktivitaeten);
+            
+            modelBuilder.Entity<Teilnehmer>().ToTable("TTeilnehmer");
+            modelBuilder.Entity<Teilnehmer>().Property(i => i.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Teilnehmer>().HasOne(i => i.Gruppe).WithMany(u => u.Teilnehmer);
             
             /*modelBuilder.Entity<ApplicationUser>().HasMany(u =>
                 u.Quizzes).WithOne(i => i.User);
@@ -62,6 +68,7 @@ namespace Template_Angular7.Data
         public DbSet<ApplicationUser> Benutzer { get; set; }
         public DbSet<Gruppe> Gruppen { get; set; }
         public DbSet<CodeAktivitaeten> CodesAktivitaeten { get; set; }
+        public DbSet<Teilnehmer> Teilnehmer { get; set; }
         #endregion Properties
     }
 }

@@ -9,12 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {GruppenListeComponent} from "./components/gruppe/gruppen-liste.component";
 import {GruppeComponent} from "./components/gruppe/gruppe.component";
-import {TeilnehmerComponent} from "./components/teilnehmer/teilnehmer.component";
 import {AboutComponent} from "./components/about/about.component";
 import {PageNotFoundComponent} from "./components/pagenotfound.component/pagenotfound.component";
 import {GruppeEditComponent} from "./components/gruppe/gruppe-edit.component";
 import {Code_aktivitaetenEditComponent} from "./components/code_aktivitaeten/code_aktivitaeten-edit.component";
 import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/code_aktivitaeten-liste.component";
+import {TeilnehmerListeComponent} from "./components/teilnehmer/teilnehmer-liste.component";
+import {TeilnehmerEditComponent} from "./components/teilnehmer/teilnehmer-edit.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/co
     GruppeEditComponent,
     Code_aktivitaetenEditComponent,
     Code_aktivitaetenListeComponent,
-    TeilnehmerComponent,
+    TeilnehmerListeComponent,
+    TeilnehmerEditComponent,
     AboutComponent,
     PageNotFoundComponent
   ],
@@ -38,7 +40,7 @@ import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/co
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: GruppenListeComponent },
       { path: 'gruppen/alle/:count', component: GruppenListeComponent },
       { path: 'gruppen/create', component: GruppeEditComponent},
       { path: 'gruppen/edit/:id', component: GruppeEditComponent},
@@ -47,7 +49,9 @@ import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/co
       { path: 'codesaktivitaeten/create/:id', component: Code_aktivitaetenEditComponent},
       { path: 'codesaktivitaeten/edit/:id', component: Code_aktivitaetenEditComponent},
       { path: 'codesaktivitaeten/alle/0', component: Code_aktivitaetenListeComponent }, // alle Codes anzeigen
-      { path: 'teilnehmer', component: TeilnehmerComponent },
+      { path: 'teilnehmer/alle/:id', component: TeilnehmerListeComponent },
+      { path: 'teilnehmer/create/:id', component: TeilnehmerEditComponent },
+      { path: 'teilnehmer/edit/:id', component: TeilnehmerEditComponent },
       { path: 'about', component: AboutComponent },
       { path: '**', component: PageNotFoundComponent }
     ])

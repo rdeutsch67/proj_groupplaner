@@ -20,6 +20,9 @@ namespace Template_Angular7.Data
             
             // Dummy Aktivitätscodes erstellen
             if (!dbContext.CodesAktivitaeten.Any()) CreateAktiviaetscodes(dbContext);
+            
+            // Dummy Teilnehmer erstellen
+            if (!dbContext.Teilnehmer.Any()) CreateTeilnehmer(dbContext);
         }
         #endregion
         
@@ -173,6 +176,76 @@ namespace Template_Angular7.Data
                 Code = "??",
                 Bezeichnung = "Klärt noch ab",
                 Summieren = false,
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+                    
+            // persist the changes on the Database
+            dbContext.SaveChanges();
+        }
+        
+        private static void CreateTeilnehmer(ApplicationDbContext dbContext)
+        {
+            // local variables
+            DateTime createdDate = DateTime.Now;
+            DateTime lastModifiedDate = DateTime.Now;
+
+            var gruppeId = dbContext.Gruppen
+                .Where(u => u.Code == "Jassrunde")
+                .FirstOrDefault()
+                .Id;
+
+            // erstelle Teilnehmer
+            EntityEntry<Teilnehmer> e1 = dbContext.Teilnehmer.Add(new Teilnehmer()
+            {
+                GruppenId = gruppeId,
+                Vorname = "Alex",
+                Nachname = "Britschgi",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Teilnehmer> e2 = dbContext.Teilnehmer.Add(new Teilnehmer()
+            {
+                GruppenId = gruppeId,
+                Vorname = "René",
+                Nachname = "Graf",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Teilnehmer> e3 = dbContext.Teilnehmer.Add(new Teilnehmer()
+            {
+                GruppenId = gruppeId,
+                Vorname = "Thomas",
+                Nachname = "Hollenstein",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Teilnehmer> e4 = dbContext.Teilnehmer.Add(new Teilnehmer()
+            {
+                GruppenId = gruppeId,
+                Vorname = "René",
+                Nachname = "Keller",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Teilnehmer> e5 = dbContext.Teilnehmer.Add(new Teilnehmer()
+            {
+                GruppenId = gruppeId,
+                Vorname = "Edu",
+                Nachname = "Kozakiewicz",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Teilnehmer> e6 = dbContext.Teilnehmer.Add(new Teilnehmer()
+            {
+                GruppenId = gruppeId,
+                Vorname = "Hampi",
+                Nachname = "Krüsi",
                 CreatedDate = createdDate,
                 LastModifiedDate = lastModifiedDate
             });
