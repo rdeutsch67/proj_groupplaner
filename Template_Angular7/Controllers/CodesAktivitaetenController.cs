@@ -155,12 +155,25 @@ namespace Template_Angular7.Controllers
         [HttpGet("alle/{gruppenId}")]
         public IActionResult alle(int gruppenId)
         {
-            var codeAktivitaeten = DbContext.CodesAktivitaeten
-                .Where(q => q.GruppenId == gruppenId)
-                .ToArray();
-            return new JsonResult(
-                codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
-                JsonSettings);
+            if (gruppenId > 0)
+            {
+                var codeAktivitaeten = DbContext.CodesAktivitaeten
+                    .Where(q => q.GruppenId == gruppenId)
+                    .ToArray();
+                return new JsonResult(
+                    codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
+                    JsonSettings);
+            }
+            else
+            {   // alle Aktiviäten
+                var codeAktivitaeten = DbContext.CodesAktivitaeten
+                    .ToArray();
+                return new JsonResult(
+                    codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
+                    JsonSettings);
+            }
+            
+            
         }
     }
 }

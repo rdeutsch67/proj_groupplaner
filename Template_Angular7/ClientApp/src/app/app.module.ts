@@ -46,6 +46,7 @@ import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/co
       { path: 'codesaktivitaeten/alle/:id', component: Code_aktivitaetenListeComponent }, // alle Codes zur Gruppe
       { path: 'codesaktivitaeten/create/:id', component: Code_aktivitaetenEditComponent},
       { path: 'codesaktivitaeten/edit/:id', component: Code_aktivitaetenEditComponent},
+      { path: 'codesaktivitaeten/alle/0', component: Code_aktivitaetenListeComponent }, // alle Codes anzeigen
       { path: 'teilnehmer', component: TeilnehmerComponent },
       { path: 'about', component: AboutComponent },
       { path: '**', component: PageNotFoundComponent }

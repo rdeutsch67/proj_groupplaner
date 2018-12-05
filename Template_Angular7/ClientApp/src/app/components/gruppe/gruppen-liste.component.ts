@@ -21,7 +21,8 @@ export class GruppenListeComponent {
 
     this.title = "Verfügbare Gruppen";
     let count = +this.activatedRoute.snapshot.params["count"];
-    if (count) {
+    this.loadData(count);
+    /*if (count) {
       console.log(count);
       let url = this.baseUrl + "api/gruppen/alle/" + count;
 
@@ -32,6 +33,45 @@ export class GruppenListeComponent {
     else {
       console.log("Invalid count: routing back to home...");
       this.router.navigate(["home"]);
+    }*/
+  }
+
+  loadData(myCount: number) {
+    if (myCount > 0 ) {
+      console.log(myCount);
+      let url = this.baseUrl + "api/gruppen/alle/" + myCount;
+      this.http.get<Gruppe[]>(url).subscribe(result => {
+        this.gruppen = result;
+      }, error => console.error(error));
+    }
+    else {
+      console.log(myCount);
+      let url = this.baseUrl + "api/gruppen/alle/0";
+      this.http.get<Gruppe[]>(url).subscribe(result => {
+        this.gruppen = result;
+      }, error => console.error(error));
+    }
+  }
+
+  onCreate() {
+    this.router.navigate(["gruppen/create"]);
+  }
+
+  onEdit(gruppe : Gruppe) {
+    this.onSelect(gruppe);
+  }
+
+  onDelete(gruppe : Gruppe) {
+    if (confirm("Soll diese Gruppe gelöscht werden?")) {
+      let url = this.baseUrl + "api/gruppen/" + gruppe.Id;
+      this.http
+        .delete(url)
+        .subscribe(res => {
+          console.log("Gruppe " + gruppe.Id + " wurde gelöscht.");
+          // refresh the question list
+          //this.loadData(0);
+          this.router.navigate(["/gruppen/alle/10"]);
+        }, error => console.log(error));
     }
   }
 

@@ -41,7 +41,7 @@
   Diese Gruppe hat (noch) keine Aktivitäten: klicke auf <strong>Neue Aktivität erstellen</strong> Button um die Erste zu erfassen!
 </div>
 
-<button (click)="onCreate()" class="btn btn-sm btn-primary">
+<button *ngIf="!showAllData" (click)="onCreate()" class="btn btn-sm btn-primary">
   <i class="fa fa-plus-circle"></i>
   Neue Aktivität erstellen
 </button>

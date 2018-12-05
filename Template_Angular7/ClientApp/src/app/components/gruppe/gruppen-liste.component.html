@@ -7,7 +7,6 @@
   </li>
 </ul>-->
 
-
 <h2>{{title}}</h2>
 <div *ngIf="gruppen.length > 0">
   <div class="table-responsive">
@@ -16,6 +15,8 @@
       <tr>
         <th>Code</th>
         <th>Text</th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
       <tbody>
@@ -24,13 +25,32 @@
           (click)="onSelect(gruppe)">
         <td>{{gruppe.Code}}</td>
         <td>{{gruppe.Bezeichnung}}</td>
+        <td>
+          <button type="submit"
+                  (click)="onEdit(gruppe)"
+                  class="btn btn-sm btn-success">
+            <i class="fas fa-edit"></i>
+            Edit
+          </button>
+        </td>
+        <td>
+          <button type="submit"
+                  (click)="onDelete(gruppe)"
+                  class="btn btn-sm btn-danger">
+            <i class="fas fa-trash-alt"></i>
+            Löschen
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
+    <button type="submit"
+            (click)="onCreate()"
+            class="btn btn-success">
+      <i class="fas fa-plus-circle"></i>
+      Gruppe erstellen
+    </button>
   </div>
 </div>
-
-
-
 
 <!--<gruppe *ngIf="selectedGruppe" [gruppe]="selectedGruppe"></gruppe>-->

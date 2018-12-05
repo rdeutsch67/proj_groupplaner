@@ -29,20 +29,23 @@
       <button *ngIf="editMode" type="submit"
               [disabled]="form.invalid"
               class="btn btn-success">
+        <i class="fas fa-save"></i>
         Speichern
       </button>
       <button *ngIf="!editMode" type="submit"
               [disabled]="form.invalid"
               class="btn btn-success">
+        <i class="fas fa-plus-circle"></i>
         Gruppe erstellen
       </button>
       <button *ngIf="!editMode" type="submit"
               (click)="onBack()"
               class="btn btn-default">
+        <i class="fas fa-arrow-alt-circle-left"></i>
         Zurück
       </button>
     </div>
   </form>
   <!--<code_aktivitaeten-liste *ngIf="editMode" [gruppe]="Gruppe" ></code_aktivitaeten-liste>-->
-  <code_aktivitaeten-liste [myGruppe]="gruppe" ></code_aktivitaeten-liste>
+  <code_aktivitaeten-liste *ngIf="editMode" [myGruppe]="gruppe" ></code_aktivitaeten-liste>
 </div>

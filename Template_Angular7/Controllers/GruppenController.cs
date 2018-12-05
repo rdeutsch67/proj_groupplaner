@@ -28,7 +28,6 @@ namespace Template_Angular7.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            //var gruppe = DbContext.Gruppen.Where(i => i.Id == id).FirstOrDefault();
             var gruppe = DbContext.Gruppen.FirstOrDefault(i => i.Id == id);
             
             // handle requests asking for non-existing quizzes
@@ -47,6 +46,7 @@ namespace Template_Angular7.Controllers
                     Formatting = Formatting.Indented
                 });
         }
+        
         /// <summary>
         /// neue Gruppe in die DB eintragen
         /// </summary>

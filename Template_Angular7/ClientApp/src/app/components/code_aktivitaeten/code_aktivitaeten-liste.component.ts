@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnChanges, SimpleChanges } from "@angular/core";
-import { Router } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -12,13 +12,21 @@ export class Code_aktivitaetenListeComponent implements OnChanges {
   @Input() myGruppe: Gruppe;
   code_aktivitaeten: Code_aktivitaet[];
   title: string;
+  showAllData: boolean;
 
-  constructor(private http: HttpClient,
+  constructor(private activatedRoute: ActivatedRoute,
+              private http: HttpClient,
               private router: Router,
               @Inject('BASE_URL') private baseUrl: string) {
 
     this.title = "Codes Aktivitäten";
     this.code_aktivitaeten = [];
+
+    let id = +this.activatedRoute.snapshot.params["id"];  // Id der Gruppe
+    this.showAllData = id <= 0;
+    if (id <= 0) {
+      this.loadData(id);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -29,13 +37,18 @@ export class Code_aktivitaetenListeComponent implements OnChanges {
       // only perform the task if the value has been changed
       //if (!change.isFirstChange()) {
         // execute the Http request and retrieve the result
-        this.loadData();
+        this.loadData(this.myGruppe.Id);
       //}
     }
   }
 
-  loadData() {
-    let url = this.baseUrl + "api/codesaktivitaeten/alle/" + this.myGruppe.Id;
+  loadData(myID: number) {
+    if (myID > 0 ) {
+      let url = this.baseUrl + "api/codesaktivitaeten/alle/" + this.myGruppe.Id;
+    }
+    else {
+      let url = this.baseUrl + "api/codesaktivitaeten/alle/0";  // alle holen
+    }
     this.http.get<Code_aktivitaet[]>(url).subscribe(res => {
       this.code_aktivitaeten = res;
     }, error => console.error(error));

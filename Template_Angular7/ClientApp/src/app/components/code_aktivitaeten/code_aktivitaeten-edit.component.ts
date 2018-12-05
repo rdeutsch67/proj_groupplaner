@@ -66,13 +66,6 @@ export class Code_aktivitaetenEditComponent {
           //this.router.navigate(["home"]);
           this.router.navigate(["gruppen/edit", this.code_aktivitaet.GruppenId]);
         }, error => console.log(error));
-      /*this.http
-        .post<Code_aktivitaet>(url, tempAkt)
-        .subscribe(res => {
-          let v = res;
-          console.log("Aktivität " + v.Id + " wurde aktualisiert.");
-          this.router.navigate(["codesaktivitaeten/edit", v.GruppenId]);
-        }, error => console.log(error));*/
     }
     else {
       this.http
@@ -83,13 +76,6 @@ export class Code_aktivitaetenEditComponent {
           //this.router.navigate(["home"]);
           this.router.navigate(["gruppen/edit", this.code_aktivitaet.GruppenId]);
         }, error => console.log(error));
-      /*this.http
-        .put<Code_aktivitaet>(url, tempAkt)
-        .subscribe(res => {
-          let v = res;
-          console.log("Aktivität " + v.Id + " wurde erstellt.");
-          this.router.navigate(["codesaktivitaeten/edit", v.GruppenId]);
-        }, error => console.log(error));*/
     }
   }
 

@@ -89,14 +89,14 @@ export class GruppeEditComponent {
           this.router.navigate(["home"]);
         }, error => console.log(error));
     }
-    else {
+    else {  // neue Gruppe erstellen
       this.http
         /*.put<Gruppe>(url, this.gruppe)*/
         .put<Gruppe>(url, tempGruppe)
         .subscribe(res => {
           var q = res;
           console.log("Gruppe " + q.Id + " erstellt.");
-          this.router.navigate(["home"]);
+          this.router.navigate(["gruppen/edit/"+q.Id]);
         }, error => console.log(error));
     }
   }
