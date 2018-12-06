@@ -14,6 +14,7 @@ export class TerminEditComponent {
   title: string;
   editMode: boolean;
   termin: Termin;
+  aktTerminDat = new Date();
   form: FormGroup;
   datePickerConfig: Partial<BsDatepickerConfig>;
 
@@ -25,7 +26,7 @@ export class TerminEditComponent {
 
     this.datePickerConfig = Object.assign({}, {containerClass: 'theme-dark-blue',
                                                            //value: new Date(2018,10,10),
-                                                           dateInputFormat: 'DD.MM.YYYY',
+                                                          // dateInputFormat: 'DD.MM.YYYY',
                                                            showWeekNumbers: false});
 
 
@@ -44,6 +45,7 @@ export class TerminEditComponent {
       var url = this.baseUrl + "api/termine/" + id;
       this.http.get<Termin>(url).subscribe(res => {
         this.termin = res;
+        this.aktTerminDat = this.termin.Datum;
         this.title = "Edit - " + this.termin.Id;
         // update the form with the quiz value
         this.updateForm();

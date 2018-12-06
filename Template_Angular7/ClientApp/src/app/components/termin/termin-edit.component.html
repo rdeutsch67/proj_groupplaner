@@ -1,4 +1,26 @@
-<div class="termine-edit">
+<div *ngIf="termin" class="termin">
+  <h2>{{termin.Id}}</h2>
+  <ul>
+    <li>
+      <label>Datum:</label>
+      <input type="text" bsDatepicker [(ngModel)]="termin.Datum" [bsValue]="01/01/2018"/>
+    </li>
+    <!--<li>
+      <label>Bezeichnung:</label>
+      <input [(ngModel)]="gruppe.Bezeichnung" placeholder="Gruppenbezeichnung eingeben..." />
+    </li>
+    <li>
+      <label>Hinweis:</label>
+      <textarea [(ngModel)]="gruppe.Beschreibung"
+                placeholder="Beschreibung zur Gruppe..."></textarea>
+    </li>-->
+  </ul>
+  <div>
+    <input type="button" value="Edit" (click)="onEdit()" />
+  </div>
+</div>
+
+<!--<div class="termine-edit">
   <h2>{{title}}</h2>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -6,20 +28,23 @@
         <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group ">
           <label for="datum">Datum:</label>
           <input type="text" id='datum'
+                 class="form-control"
+                 bsDatepicker
+                 [bsValue]="form.get('Datum').value"
+                  />
+          <input type="text" bsDatepicker [(ngModel)]="termin.Datum">
+        </div>
+        &lt;!&ndash;<div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group ">
+          <label for="datum">Datum:</label>
+          <input type="text" id='datum'
                  [value]="form.get('Datum').value | date: 'dd.MM.yyyy'"
-                 [bsValue]="form.get('Datum').value | date: 'dd.MM.yyyy'"
+                 [bsValue]="aktTerminDat"
                  bsDatepicker [bsConfig]="datePickerConfig"
                  formControlName="Datum" required
                  class="form-control" />
-        </div>
+        </div>&ndash;&gt;
       </div>
     </div>
-    <!--<div class="form-group">
-      <label for="datum">Datum:</label>
-      <input type="text" id='datum'
-             formControlName="Datum" required
-             class="form-control" />
-    </div>-->
     <div class="form-group">
       <label for="idGruppe">Gruppe:</label>
       <br />
@@ -66,7 +91,7 @@
         <i class="fas fa-plus-circle"></i>
         Aktivität erstellen
       </button>
-      <!--<button *ngIf="!editMode" type="submit"-->
+      &lt;!&ndash;<button *ngIf="!editMode" type="submit"&ndash;&gt;
       <button type="submit"
               (click)="onBack()"
               class="btn btn-secondary">
@@ -75,5 +100,5 @@
       </button>
     </div>
   </form>
-</div>
+</div>-->
 
