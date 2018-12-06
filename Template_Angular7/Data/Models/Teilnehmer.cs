@@ -41,6 +41,11 @@ namespace Template_Angular7.Data
         /// </summary>
         [ForeignKey("GruppenId")]
         public virtual Gruppe Gruppe  { get; set; }
+        
+        /// <summary>
+        /// Termin, welche zum Teilnehmer gehören
+        /// </summary>
+        public virtual List<Termin> Termine { get; set; }
         #endregion
     }
 }

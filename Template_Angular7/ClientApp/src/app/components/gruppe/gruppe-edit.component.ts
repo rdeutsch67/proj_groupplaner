@@ -47,28 +47,6 @@ export class GruppeEditComponent {
     }
   }
 
-  /*onSubmit(gruppe: Gruppe) {
-    var url = this.baseUrl + "api/gruppen";
-    if (this.editMode) {
-      this.http
-        .post<Gruppe>(url, gruppe)
-        .subscribe(res => {
-          var v = res;
-          console.log("Gruppe " + v.Id + " aktualisiert.");
-          this.router.navigate(["home"]);
-        }, error => console.log(error));
-    }
-    else {
-      this.http
-        .put<Gruppe>(url, gruppe)
-        .subscribe(res => {
-          var q = res;
-          console.log("Gruppe " + q.Id + " neu erstellt.");
-          this.router.navigate(["home"]);
-        }, error => console.log(error));
-    }
-  }*/
-
   onSubmit() {
     // build a temporary quiz object from form values
     var tempGruppe = <Gruppe>{};

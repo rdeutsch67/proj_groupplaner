@@ -38,4 +38,9 @@ z.B.
 -> da ein Array von Datensätzen erwartet wird, fehlen oben die Brackets []
 -> return new JsonResult(
                    codeAktivitaeten.Adapt<CodeAktivitaetenViewModel[]>(),
-                   JsonSettings);               
+                   JsonSettings); 
+                   
+Komponenten:
+
+Bootstrap 4
+NgxBootstrap                                 

@@ -20,6 +20,8 @@ export class GruppenListeComponent {
               @Inject('BASE_URL') private baseUrl: string) {
 
     this.title = "Verfügbare Gruppen";
+    this.gruppen = [];
+
     let count = +this.activatedRoute.snapshot.params["count"];
     if (isNaN(count)) {
       count = 0;

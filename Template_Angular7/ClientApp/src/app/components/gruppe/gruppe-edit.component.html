@@ -25,6 +25,17 @@
                 placeholder="Beschreibung eingeben..."
                 class="form-control"></textarea>
     </div>
+
+    <!--<div class="form-group">
+      <label for="gender1" class="col-sm-2 control-label">Gender:</label>
+      <div class="col-sm-2 input-group">
+        <select class="form-control inputstl" id="gender1">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+
+      </div>
+    </div>-->
     <div class="form-group commands">
       <button *ngIf="editMode" type="submit"
               [disabled]="form.invalid"
@@ -46,9 +57,9 @@
       </button>
     </div>
   </form>
-  <!--<code_aktivitaeten-liste *ngIf="editMode" [gruppe]="Gruppe" ></code_aktivitaeten-liste>-->
-  <teilnehmer-liste *ngIf="editMode" [myGruppe]="gruppe" ></teilnehmer-liste>
 
+  <termin-liste *ngIf="editMode" [myGruppe]="gruppe"></termin-liste>
+  <teilnehmer-liste *ngIf="editMode" [myGruppe]="gruppe" ></teilnehmer-liste>
   <code_aktivitaeten-liste *ngIf="editMode" [myGruppe]="gruppe" ></code_aktivitaeten-liste>
 
 </div>

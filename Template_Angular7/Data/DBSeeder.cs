@@ -23,6 +23,9 @@ namespace Template_Angular7.Data
             
             // Dummy Teilnehmer erstellen
             if (!dbContext.Teilnehmer.Any()) CreateTeilnehmer(dbContext);
+            
+            // Dummy Termine erstellen
+            if (!dbContext.Termine.Any()) CreateTermine(dbContext);
         }
         #endregion
         
@@ -254,6 +257,55 @@ namespace Template_Angular7.Data
             dbContext.SaveChanges();
         }
         
+        private static void CreateTermine(ApplicationDbContext dbContext)
+        {
+            // local variables
+            DateTime createdDate = DateTime.Now;
+            DateTime lastModifiedDate = DateTime.Now;
+
+            var gruppeId = dbContext.Gruppen
+                .Where(u => u.Code == "Jassrunde")
+                .FirstOrDefault()
+                .Id;
+
+            // erstelle Termine
+            EntityEntry<Termin> e1 = dbContext.Termine.Add(new Termin()
+            {
+                IdGruppe = gruppeId,
+                IdTeilnehmer = 1,
+                IdAktivitaet = 1,
+                Datum = createdDate,
+                Hinweis = "Bin gerne mit dabei.",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Termin> e2 = dbContext.Termine.Add(new Termin()
+            {
+                IdGruppe = gruppeId,
+                IdTeilnehmer = 2,
+                IdAktivitaet = 2,
+                Datum = createdDate,
+                Hinweis = "Bin auch mit dabei.",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            EntityEntry<Termin> e3 = dbContext.Termine.Add(new Termin()
+            {
+                IdGruppe = gruppeId,
+                IdTeilnehmer = 3,
+                IdAktivitaet = 4,
+                Datum = createdDate,
+                Hinweis = "Mal guggen.",
+                CreatedDate = createdDate,
+                LastModifiedDate = lastModifiedDate
+            });
+            
+            // persist the changes on the Database
+            dbContext.SaveChanges();
+        }
+        
         #endregion
         
         #region Utility Methods
@@ -276,7 +328,6 @@ namespace Template_Angular7.Data
                 Code = String.Format("Gruppe {0} Code", num),
                 Bezeichnung = String.Format("Beispielgruppe {0}.", num),
                 Beschreibung = "Dies ist eine automatisch von DBSeeder erstellte Gruppe.",
-                //ViewCount = viewCount,
                 CreatedDate = createdDate,
                 LastModifiedDate = createdDate
             };

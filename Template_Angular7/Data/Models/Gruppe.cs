@@ -53,6 +53,11 @@ namespace Template_Angular7.Data
         /// </summary>
         public virtual List<Teilnehmer> Teilnehmer { get; set; }
         
+        /// <summary>
+        /// Liste aller Teilnehmer zu dieser Gruppe.
+        /// </summary>
+        public virtual List<Termin> Termine { get; set; }
+        
         #endregion
     }
 }

@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Template_Angular7.Data
 {
-    public class CodeAktivitaeten
+    public class Termin
     {
         #region Constructor
-        public CodeAktivitaeten()
+        public Termin()
         {
         }
         #endregion
@@ -20,16 +20,17 @@ namespace Template_Angular7.Data
         public int Id { get; set; }
         
         [Required]
-        public int GruppenId { get; set; }
+        public int IdGruppe { get; set; }
+        [Required]
+        public int IdTeilnehmer { get; set; }
+        [Required]
+        public int IdAktivitaet { get; set; }
         
         [Required]
-        public string Code { get; set; }
+        public DateTime Datum { get; set; }
         
-        [Required]
-        public string Bezeichnung { get; set; }
+        public string Hinweis { get; set; }
         
-        [DefaultValue(0)]
-        public bool Summieren { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; }
         [Required]
@@ -40,13 +41,14 @@ namespace Template_Angular7.Data
         /// <summary>
         /// Codes, welche zur Gruppe gehören
         /// </summary>
-        [ForeignKey("GruppenId")]
+        [ForeignKey("IdGruppe")]
         public virtual Gruppe Gruppe  { get; set; }
         
-        /// <summary>
-        /// Termin, welche zum Teilnehmer gehören
-        /// </summary>
-        public virtual List<Termin> Termine { get; set; }
+        [ForeignKey("IdTeilnehmer")]
+        public virtual Teilnehmer Teilnehmer  { get; set; }
+        
+        [ForeignKey("IdAktivitaet")]
+        public virtual CodeAktivitaeten CodesAktivitaeten  { get; set; }
         #endregion
     }
 }

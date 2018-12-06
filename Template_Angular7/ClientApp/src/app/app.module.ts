@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BsDatepickerModule} from "ngx-bootstrap";
 import {GruppenListeComponent} from "./components/gruppe/gruppen-liste.component";
 import {GruppeComponent} from "./components/gruppe/gruppe.component";
 import {AboutComponent} from "./components/about/about.component";
@@ -16,6 +17,8 @@ import {Code_aktivitaetenEditComponent} from "./components/code_aktivitaeten/cod
 import {Code_aktivitaetenListeComponent} from "./components/code_aktivitaeten/code_aktivitaeten-liste.component";
 import {TeilnehmerListeComponent} from "./components/teilnehmer/teilnehmer-liste.component";
 import {TeilnehmerEditComponent} from "./components/teilnehmer/teilnehmer-edit.component";
+import {TerminEditComponent} from "./components/termin/termin-edit.component";
+import {TerminListeComponent} from "./components/termin/termin-liste.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import {TeilnehmerEditComponent} from "./components/teilnehmer/teilnehmer-edit.c
     Code_aktivitaetenListeComponent,
     TeilnehmerListeComponent,
     TeilnehmerEditComponent,
+    TerminEditComponent,
+    TerminListeComponent,
     AboutComponent,
     PageNotFoundComponent
   ],
@@ -38,6 +43,7 @@ import {TeilnehmerEditComponent} from "./components/teilnehmer/teilnehmer-edit.c
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: GruppenListeComponent },
@@ -52,6 +58,9 @@ import {TeilnehmerEditComponent} from "./components/teilnehmer/teilnehmer-edit.c
       { path: 'teilnehmer/alle/:id', component: TeilnehmerListeComponent },
       { path: 'teilnehmer/create/:id', component: TeilnehmerEditComponent },
       { path: 'teilnehmer/edit/:id', component: TeilnehmerEditComponent },
+      { path: 'termine/alle/:id', component: TerminListeComponent },
+      { path: 'termine/create/:id', component: TerminEditComponent },
+      { path: 'termine/edit/:id', component: TerminEditComponent },
       { path: 'about', component: AboutComponent },
       { path: '**', component: PageNotFoundComponent }
     ])
