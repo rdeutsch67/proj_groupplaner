@@ -17,7 +17,7 @@
       <tbody>
       <tr *ngFor="let termin of termine">
         <td>{{termin.Id}}</td>
-        <td>{{termin.Datum}}</td>
+        <td>{{termin.Datum | date: 'dd.MM.yyyy'}}</td>
         <td>{{termin.IdGruppe}}</td>
         <td>{{termin.IdTeilnehmer}}</td>
         <td>{{termin.IdAktivitaet}}</td>

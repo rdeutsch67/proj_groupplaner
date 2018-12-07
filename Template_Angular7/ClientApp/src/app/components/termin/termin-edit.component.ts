@@ -10,13 +10,14 @@ import { BsDatepickerConfig} from "ngx-bootstrap";
   styleUrls: ['./termin-edit.component.css']
 })
 
-export class TerminEditComponent {
+export class TerminEditComponent implements OnInit {
   title: string;
   editMode: boolean;
   termin: Termin;
-  aktTerminDat = new Date();
+  aktTerminDat = Date;
   form: FormGroup;
   datePickerConfig: Partial<BsDatepickerConfig>;
+  bsValue = new Date();
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -26,7 +27,7 @@ export class TerminEditComponent {
 
     this.datePickerConfig = Object.assign({}, {containerClass: 'theme-dark-blue',
                                                            //value: new Date(2018,10,10),
-                                                          // dateInputFormat: 'DD.MM.YYYY',
+                                                           dateInputFormat: 'DD.MM.YYYY',
                                                            showWeekNumbers: false});
 
 
@@ -34,7 +35,7 @@ export class TerminEditComponent {
     this.termin = <Termin>{};
 
     // initialize the form
-    this.createForm();
+    //this.createForm();
 
     var id = +this.activatedRoute.snapshot.params["id"];
     // check if we're in edit mode or not
@@ -45,8 +46,15 @@ export class TerminEditComponent {
       var url = this.baseUrl + "api/termine/" + id;
       this.http.get<Termin>(url).subscribe(res => {
         this.termin = res;
-        this.aktTerminDat = this.termin.Datum;
+
+
+        //this.aktTerminDat = new Date('August 19, 1975');
+        this.aktTerminDat = new Date(this.termin.Datum);
+
+
+
         this.title = "Edit - " + this.termin.Id;
+        //this.bsValue = this.termin.Datum;
         // update the form with the quiz value
         this.updateForm();
       }, error => console.error(error));
@@ -94,9 +102,9 @@ export class TerminEditComponent {
     this.router.navigate(["gruppen/edit", this.termin.IdGruppe]);
   }
 
-  createForm() {
+  ngOnInit() {
     this.form = this.fb.group({
-      Datum: ['', Validators.required],
+      Datum: [''],
       IdGruppe: '',
       IdTeilnehmer: '',
       IdAktivitaet: '',
@@ -104,9 +112,20 @@ export class TerminEditComponent {
     });
   }
 
+  /*createForm() {
+    this.form = this.fb.group({
+      Datum: [''],
+      Datum2: [''],
+      IdGruppe: '',
+      IdTeilnehmer: '',
+      IdAktivitaet: '',
+      Hinweis: ''
+    });
+  }*/
+
   updateForm() {
     this.form.setValue({
-      Datum: this.termin.Datum,
+      Datum: this.aktTerminDat,
       IdGruppe: this.termin.IdGruppe,
       IdTeilnehmer: this.termin.IdTeilnehmer,
       IdAktivitaet: this.termin.IdAktivitaet,

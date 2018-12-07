@@ -3,6 +3,6 @@ interface Termin {
   IdGruppe: number;
   IdTeilnehmer: number;
   IdAktivitaet: number;
-  Datum: Date,
+  Datum: string,
   Hinweis: string;
 }
